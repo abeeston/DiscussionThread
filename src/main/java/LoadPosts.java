@@ -38,8 +38,11 @@ public class LoadPosts extends HttpServlet {
             String filename = "discussion.txt";
 
             List<Post> list = new ArrayList<Post>();
-            String path = getServletContext().getRealPath("/") + filename;
+            //String path = getServletContext().getRealPath("/") + filename;
 
+            String dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
+            String path = dataDirectory + "\\discussion.txt";
+            
             FileReader fr = new FileReader(path);
 
             try (BufferedReader br = new BufferedReader(fr)) {
