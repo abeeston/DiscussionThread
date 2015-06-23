@@ -56,7 +56,10 @@ public class CreatePost extends HttpServlet {
         //request.getSession().setAttribute("content", content);
         
         // write to the file
-        String path = getServletContext().getRealPath("/") + filename;
+        //String path = getServletContext().getRealPath("/") + filename;
+        
+        String dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
+        String path = dataDirectory + "\\discussion.txt";
         
         FileWriter fw = new FileWriter(path, true);
         String text = username + ":" + /*time + ":" + */content + "\n";
